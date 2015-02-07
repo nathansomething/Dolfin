@@ -28,7 +28,7 @@
         var questionBox = $("<div>");
         var question = data.Questions[key].QuestionText;
         questionBox.append(question);
-        var choices = $("<ul>");
+        var choices = $("<ol>").attr("type", "a");
         $.each(data.Questions[key].Choices, function(key2, value2) {
           choices.append("<li>" + value2 + "</li>");
         });
@@ -36,6 +36,9 @@
         $(document.body).append(questionBox);
       });
     });
+    </script>
+    <script>
+
     </script>
   </body>
 </html>
