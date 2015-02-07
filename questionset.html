@@ -6,39 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- <link rel="icon" href="../../favicon.ico"> -->
-    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
+    <link rel="Stylesheet" href="style.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-  <title> </title>
+    <title> </title>
   </head>
   <body>
     <script>
     $.getJSON("QuestionSets/Dolphin.json", function(data) {
+      var header = $("<h1>").text(data.Topic);
+      $(document.body).append(header);
       $.each(data.Questions, function(key, value) {
         var questionBox = $("<div>");
         var question = data.Questions[key].QuestionText;
         questionBox.append(question);
         var choices = $("<ol>").attr("type", "a");
         $.each(data.Questions[key].Choices, function(key2, value2) {
-          choices.append("<li>" + value2 + "</li>");
+          var choice = $("<li>").addClass("mult-choice-box").text(value2)
+          choices.append(choice);
         });
-        questionBox.append(choices);
-        $(document.body).append(questionBox);
+      questionBox.append(choices);
+      $(document.body).append(questionBox);
       });
     });
-    </script>
-    <script>
-
     </script>
   </body>
 </html>
