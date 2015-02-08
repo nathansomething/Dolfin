@@ -12,7 +12,7 @@ js = Bundle('jquery.js', 'base.js', 'widgets.js',
 assets.register('js_all', js)
 # app.jinja_loader = jinja2.FileSystemLoader('app/templates') 
 
-@app.route("/dolphins/questions", methods=["GET", "POST"])
+@app.route("/QuestionSets/Dolphin.json", methods=["GET", "POST"])
 def questions():
     if request.method == "POST":
        SITE_ROOT = os.path.realpath(os.path.dirname('Dolfin'))
