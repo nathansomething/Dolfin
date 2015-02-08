@@ -3,7 +3,9 @@ from flask import Flask, jsonify, json, request, render_template
 import os
 import jinja2
 from flask.ext.assets import Environment, Bundle
-from flask_mail import Mail, Message
+from flask.ext.mail import Mail, Message
+
+
 
 app = Flask(__name__, static_url_path='')
 
@@ -16,7 +18,7 @@ assets.register('js_all', js)
 
 @app.route("/QuestionSets/Dolphin.json", methods=["GET", "POST"])
 def questions():
-   if request.method == "POST":
+#   if request.method == "POST":
       SITE_ROOT = os.path.realpath(os.path.dirname('Dolfin'))
       json_url = os.path.join(SITE_ROOT, "QuestionSets", "Dolphin.json")
       data = json.load(open(json_url))
