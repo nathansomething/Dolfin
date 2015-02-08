@@ -57,8 +57,10 @@ def dolphin_info():
 def question():
    return render_template("questionset.html")
 
+@app.route("/Users")
+def getUser():
+	return "VICTORY!!!"
+
 if __name__ == "__main__":
     app.debug = True
     app.run(host='0.0.0.0', port=80)
-
-
