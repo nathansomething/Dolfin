@@ -22,6 +22,11 @@ def questions():
 
 @app.route("/")
 def home():
+	msg = Message("Hello",
+              sender="team@dolfin.io",
+              recipients=["nathan.something@gmail.com"])
+	      msg.body = "testing")
+   mail.send(msg)	
    return render_template("index.html")
 
 @app.route("/signup.html")
