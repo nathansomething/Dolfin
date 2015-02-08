@@ -12,12 +12,13 @@ js = Bundle('jquery.js', 'base.js', 'widgets.js',
 assets.register('js_all', js)
 # app.jinja_loader = jinja2.FileSystemLoader('app/templates') 
 
-@app.route("/dolphins/questions")
+@app.route("/dolphins/questions", methods=["GET", "POST"])
 def questions():
-    SITE_ROOT = os.path.realpath(os.path.dirname('Dolfin'))
-    json_url = os.path.join(SITE_ROOT, "QuestionSets", "Dolphin.json")
-    data = json.load(open(json_url))
-    return jsonify(data)
+    if request.method == "POST":
+       SITE_ROOT = os.path.realpath(os.path.dirname('Dolfin'))
+       json_url = os.path.join(SITE_ROOT, "QuestionSets", "Dolphin.json")
+       data = json.load(open(json_url))
+       return jsonify(data)
 
 @app.route("/")
 def home():
@@ -38,6 +39,14 @@ def topics():
 @app.route("/about.html")
 def about():
 	return render_template("about.html")
+
+@app.route("/dolphin-info.html")
+def dolphin_info():
+        return render_template("dolphin-info.html")
+
+@app.route("/questionset.html")
+def question():
+        return render_template("questionset.html")
 
 if __name__ == "__main__":
     app.debug = True
